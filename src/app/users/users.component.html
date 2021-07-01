@@ -1,0 +1,37 @@
+<div class="container mt-2">
+  <div class="container d-flex justify-content-between mt-5 ">
+    <h3>Users Database</h3>
+    <a routerLink="/create" class="btn btn-success"> <span style="font-size: 20px;">+</span> Add User</a>
+  </div>
+  <h1 class="text-center text-primary fw-lighter mt-5" *ngIf="Users.length < 1">
+    Hello Virtuoso
+  </h1>
+  <div class="table-container">
+    <table *ngIf="Users.length > 0" class="table table-custom">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Job</th>
+          <th scope="col">Date</th>
+          <th scope="col">Edit/Update</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of Users">
+          <th scope="row">{{user.id}}</th>
+          <td>{{user.name}}</td>
+          <td>{{user.job}}</td>
+          <td>{{user.createdAt}}</td>
+          <td>
+            <button (click)="OnUpdateHandler(user)" class="btn btn-primary">Update</button> &nbsp;
+            <button (click)="OnDeleteHandler(user.id)" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+</div>

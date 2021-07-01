@@ -1,0 +1,42 @@
+<div class="formContainer mt-5">
+
+  <form class="container mt-3 col-lg-4 custom-form-container" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h4>Create a job</h4>
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input formControlName="name" type="text" class="form-control" name="name" placeholder="Enter your name"
+        required />
+
+      <div class="text-danger form-text"
+        *ngIf="form.get('name')!.invalid && (form.get('name')!.dirty || form.get('name')!.touched)">
+        <span *ngIf="form.get('name')!.errors?.required">
+          Name is required.
+        </span>
+        <span *ngIf="form.get('name')!.errors?.minlength">
+          Name must be at least 4 characters long.
+        </span>
+      </div>
+
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Job</label>
+      <input formControlName="job" type="text" class="form-control" placeholder="Enter your Job" required />
+
+      <div class="text-danger form-text"
+        *ngIf="form.get('job')!.invalid && (form.get('job')!.dirty || form.get('job')!.touched)">
+        <span *ngIf="form.get('job')!.errors?.required">
+          Job is required.
+        </span>
+        <span *ngIf="form.get('job')!.errors?.minlength">
+          Name must be at least 4 characters long.
+        </span>
+      </div>
+
+    </div>
+
+
+    <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Submit</button> &nbsp;
+    <a routerLink="/" type="button" class="btn btn-primary">Home</a>
+  </form>
+</div>
